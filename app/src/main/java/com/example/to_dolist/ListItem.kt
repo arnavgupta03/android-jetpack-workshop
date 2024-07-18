@@ -3,9 +3,9 @@ package com.example.to_dolist
 data class ListItem(
     val title: String,
     val description: String,
-    val completed: Boolean,
+    var completed: Boolean,
 )
 
-object ListItems {
+object Task {
     var taskList: List<ListItem> = emptyList()
 }

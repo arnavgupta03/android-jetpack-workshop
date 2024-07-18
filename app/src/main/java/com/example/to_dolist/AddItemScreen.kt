@@ -34,6 +34,10 @@ fun AddItemScreen(
         mutableStateOf("")
     }
 
+    /*
+        TODO: add variables here for the description and completion status
+     */
+
     Scaffold(
         modifier = modifier.fillMaxSize(),
         containerColor = MaterialTheme.colorScheme.background,

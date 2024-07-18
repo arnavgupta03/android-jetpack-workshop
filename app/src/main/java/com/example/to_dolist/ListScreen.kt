@@ -76,6 +76,25 @@ fun ListScreen(
 @Preview
 @Composable
 fun PreviewListScreen() {
+    Task.taskList = listOf(
+        ListItem(
+            title = "Task 1",
+            description = """
+                This is a task with this description.
+                The description is quite long and has some text that needs to be printed.
+            """.trimIndent(),
+            completed = true,
+        ),
+        ListItem(
+            title = "Task 2",
+            description = """
+                This is another task with this description.
+                The description is also quite long and has some text that needs to be printed.
+            """.trimIndent(),
+            completed = false,
+        ),
+    )
+
     ListScreen(
         navActions = MainNavigationActions(rememberNavController())
     )
