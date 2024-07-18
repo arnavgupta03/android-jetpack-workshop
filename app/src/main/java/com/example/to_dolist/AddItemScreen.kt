@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,6 +34,14 @@ fun AddItemScreen(
 ) {
     var title by remember {
         mutableStateOf("")
+    }
+
+    var description by remember {
+        mutableStateOf("")
+    }
+
+    var completed by remember {
+        mutableStateOf(false)
     }
 
     Scaffold(
@@ -84,13 +94,67 @@ fun AddItemScreen(
                         }
                     }
 
-                    /*
-                        TODO: add task item description
-                     */
+                    // Task item description
+                    Row(
+                        modifier = modifier.padding(top = 16.dp),
+                    ) {
+                        Column {
+                            Row {
+                                Text(
+                                    text = "Task Description",
+                                    fontSize = TextUnit(20f, TextUnitType.Sp),
+                                )
+                            }
+                            Row {
+                                OutlinedTextField(
+                                    value = description,
+                                    onValueChange = { t -> description = t },
+                                    label = { Text("Description") },
+                                )
+                            }
+                        }
+                    }
 
-                    /*
-                        TODO: add button to submit item
-                     */
+                    // Task toggle
+                    Row(
+                        modifier = modifier.padding(top = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Column {
+                            Text(
+                                text = "Completed: ",
+                                fontSize = TextUnit(20f, TextUnitType.Sp),
+                            )
+                        }
+                        Column {
+                            Switch(
+                                checked = completed,
+                                onCheckedChange = { b -> completed = b },
+                            )
+                        }
+                    }
+
+                    // Task submit
+                    Row(
+                        modifier = modifier.padding(top = 16.dp),
+                    ) {
+                        Column {
+                            Button(onClick = {
+                                Task.taskList += ListItem(
+                                    title = title,
+                                    description = description,
+                                    completed = completed,
+                                )
+
+                                navActions.navigateToList()
+                            }) {
+                                Text(
+                                    text = "Add Task",
+                                    fontSize = TextUnit(20f, TextUnitType.Sp),
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }
