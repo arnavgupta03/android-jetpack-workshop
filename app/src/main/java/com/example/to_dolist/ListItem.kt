@@ -6,6 +6,6 @@ data class ListItem(
     var completed: Boolean,
 )
 
-object ListItems {
+object Task {
     var taskList: List<ListItem> = emptyList()
 }
