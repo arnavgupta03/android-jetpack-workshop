@@ -5,3 +5,7 @@ data class ListItem(
     val description: String,
     val completed: Boolean,
 )
+
+object ListItems {
+    var taskList: List<ListItem> = emptyList()
+}
