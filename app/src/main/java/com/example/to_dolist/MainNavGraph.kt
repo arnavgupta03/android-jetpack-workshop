@@ -34,7 +34,10 @@ fun MainNavGraph(
         composable(
             Destinations.ADD_ITEM_ROUTE,
         ) {
-
+            AddItemScreen(
+                modifier = modifier,
+                navActions = navigationActions,
+            )
         }
     }
 }
